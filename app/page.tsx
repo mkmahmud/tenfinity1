@@ -1,97 +1,79 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ShoppingBag, Sparkles } from "lucide-react"
+import { ProductCard } from "@/components/product-card"
+import { ArrowRight, Sparkles, Star } from "lucide-react"
+import { products, testimonials } from "@/lib/products"
 
 export default function Home() {
+  const featuredProducts = products.slice(0, 4)
+  const saleProducts = products.filter((p) => p.isSale).slice(0, 4)
+  const newProducts = products.filter((p) => p.isNew).slice(0, 4)
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-sm" />
-            <span className="font-semibold text-lg tracking-tight">TENFINITY</span>
-          </div>
-
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-sm font-medium hover:text-accent transition-colors">
-              Home
-            </a>
-            <a href="#" className="text-sm font-medium hover:text-accent transition-colors">
-              Shop
-            </a>
-            <a href="#" className="text-sm font-medium hover:text-accent transition-colors">
-              Collections
-            </a>
-            <a href="#" className="text-sm font-medium hover:text-accent transition-colors">
-              About
-            </a>
-            <a href="#" className="text-sm font-medium hover:text-accent transition-colors">
-              Contact
-            </a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <button className="relative p-2 hover:bg-muted rounded-lg transition-colors">
-              <ShoppingBag className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-accent rounded-full" />
-            </button>
-            <Button className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground">
-              Sign In
-            </Button>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 md:py-32">
+      <section className="relative overflow-hidden py-16 md:py-32">
         <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent" />
 
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="absolute top-20 right-20 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-pulse opacity-40" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse opacity-30" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 border border-secondary/30 rounded-full">
-                  <Sparkles className="w-4 h-4 text-accent" />
-                  <span className="text-sm font-medium text-secondary">New Collection</span>
+            <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000">
+              <div className="space-y-3 md:space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 md:px-4 py-2 bg-secondary/10 border border-secondary/30 rounded-full hover:border-secondary/50 transition-all duration-300">
+                  <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-accent animate-spin-slow" />
+                  <span className="text-xs md:text-sm font-medium text-secondary">New Collection Spring 25</span>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-balance leading-tight">
                   Minimal.
                   <br />
                   Crafted.
                   <br />
-                  <span className="text-accent">Eternal.</span>
+                  <span className="inline-block bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+                    Eternal.
+                  </span>
                 </h1>
               </div>
 
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
                 Modern essentials built to last. Premium materials, timeless silhouettes. Explore the new collection
                 with elevated basics designed for real life.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 group transition-all duration-300 transform hover:scale-105"
+                >
                   Shop Collection
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-border hover:bg-muted bg-transparent">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-border hover:bg-muted bg-transparent transition-all duration-300 transform hover:scale-105"
+                >
                   Explore Lookbook
                 </Button>
               </div>
 
               {/* Trust Indicators */}
-              <div className="space-y-3 pt-8 border-t border-border">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="space-y-2 md:space-y-3 pt-6 md:pt-8 border-t border-border animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-1000">
+                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors">
                   <div className="w-1 h-1 bg-accent rounded-full" />
                   <span>Free shipping over $100</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors">
                   <div className="w-1 h-1 bg-accent rounded-full" />
                   <span>Easy returns</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors">
                   <div className="w-1 h-1 bg-accent rounded-full" />
                   <span>Ethically made</span>
                 </div>
@@ -99,21 +81,24 @@ export default function Home() {
             </div>
 
             {/* Right - Featured Image */}
-            <div className="relative h-96 md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden group">
+            <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-xl md:rounded-2xl overflow-hidden group animate-in fade-in slide-in-from-right-8 duration-1000">
               <div className="absolute inset-0 bg-gradient-to-b from-accent/20 to-accent/5 mix-blend-overlay" />
               <img
                 src="/luxury-white-zip-up-hoodie-lifestyle-shot-premium-.jpg"
                 alt="Featured clothing product"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
 
-              <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/20">
-                <div className="flex items-center justify-between">
+              <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6 bg-white/95 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg border border-white/20 transform transition-all duration-500 group-hover:translate-y-0 translate-y-2 opacity-0 group-hover:opacity-100">
+                <div className="flex items-center justify-between gap-2 md:gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-foreground">Premium Hoodie</p>
-                    <p className="text-2xl font-bold text-foreground">$148</p>
+                    <p className="text-xs md:text-sm font-semibold text-foreground">Premium Hoodie</p>
+                    <p className="text-lg md:text-2xl font-bold text-foreground">$148</p>
                   </div>
-                  <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <Button
+                    size="sm"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-xs md:text-sm"
+                  >
                     Add
                   </Button>
                 </div>
@@ -123,203 +108,169 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Color Selection Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-sm font-semibold tracking-wider text-muted-foreground mb-4">CHOOSE COLOR</h3>
-              <div className="flex items-center gap-4">
-                <button className="w-6 h-6 bg-primary rounded-full ring-2 ring-primary ring-offset-2" title="Navy" />
-                <button
-                  className="w-6 h-6 bg-accent rounded-full hover:ring-2 hover:ring-accent hover:ring-offset-2 transition-all"
-                  title="Sage"
-                />
-                <button
-                  className="w-6 h-6 bg-yellow-200 rounded-full hover:ring-2 hover:ring-yellow-200 hover:ring-offset-2 transition-all"
-                  title="Cream"
-                />
-                <button
-                  className="w-6 h-6 bg-blue-200 rounded-full hover:ring-2 hover:ring-blue-200 hover:ring-offset-2 transition-all"
-                  title="Sky"
-                />
-                <span className="text-sm font-medium text-muted-foreground ml-auto">Selected: Sage</span>
-              </div>
+      {/* Featured Products Section */}
+      <section id="featured" className="py-16 md:py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="space-y-8 md:space-y-12">
+            <div className="space-y-2 md:space-y-3">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Featured Products</h2>
+              <p className="text-base md:text-lg text-muted-foreground">
+                Curated essentials — elevated basics in refined fabrics.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {featuredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Collections Preview */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="space-y-12">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Collections</h2>
-              <p className="text-lg text-muted-foreground">
-                Curated essentials — elevated basics in refined fabrics. Tap a product to learn more.
+      <section id="sale" className="py-16 md:py-20 bg-accent/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="space-y-8 md:space-y-12">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div className="space-y-2 md:space-y-3">
+                <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-accent/20 border border-accent/30 rounded-full">
+                  <span className="text-xs md:text-sm font-semibold text-accent">Limited Time</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Spring Sale</h2>
+                <p className="text-base md:text-lg text-muted-foreground max-w-md">
+                  Up to 20% off on selected premium pieces. Limited stock available.
+                </p>
+              </div>
+              <Button
+                variant="outline"
+                className="border-border hover:bg-primary hover:text-primary-foreground hover:border-primary gap-2 bg-transparent w-fit"
+              >
+                View All Sale
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {saleProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="new-arrivals" className="py-16 md:py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="space-y-8 md:space-y-12">
+            <div className="space-y-2 md:space-y-3">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">New Arrivals</h2>
+              <p className="text-base md:text-lg text-muted-foreground">
+                Discover the latest additions to our premium collection.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Product cards will be inserted here as separate components */}
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="group cursor-pointer">
-                  <div className="relative h-80 bg-muted rounded-xl overflow-hidden mb-4">
-                    <img
-                      src={`/luxury-minimalist-clothing-product-.jpg?height=400&width=300&query=luxury%20minimalist%20clothing%20product%20${i}`}
-                      alt={`Product ${i}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {newProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="py-16 md:py-20 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="space-y-8 md:space-y-12">
+            <div className="text-center space-y-2 md:space-y-3">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Loved by our customers</h2>
+              <p className="text-base md:text-lg text-muted-foreground">See what people are saying about TENFINITY</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {testimonials.map((testimonial) => (
+                <div
+                  key={testimonial.id}
+                  className="bg-white rounded-lg p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col gap-4"
+                >
+                  {/* Rating */}
+                  <div className="flex gap-1">
+                    {Array(testimonial.rating)
+                      .fill(0)
+                      .map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+                      ))}
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">Classic Essential</h3>
-                  <p className="text-sm text-muted-foreground mb-3">Premium quality piece</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold">$148</span>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-border hover:bg-primary hover:text-primary-foreground hover:border-primary bg-transparent"
-                    >
-                      Add
-                    </Button>
+
+                  {/* Comment */}
+                  <p className="text-sm md:text-base text-foreground flex-1">{testimonial.comment}</p>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={testimonial.image || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-sm">{testimonial.name}</p>
+                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="flex justify-center pt-8">
-              <Button
-                variant="outline"
-                className="border-border hover:bg-primary hover:text-primary-foreground hover:border-primary gap-2 bg-transparent"
-              >
-                Browse Full Collection
-                <ArrowRight className="w-4 h-4" />
-              </Button>
+      <section id="collections" className="py-16 md:py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="space-y-8 md:space-y-12">
+            <div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2 md:mb-3">
+                Browse Collections
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground">Explore curated essentials by category</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {["Tops", "Shirts", "Pants", "Outerwear"].map((category) => (
+                <div
+                  key={category}
+                  className="group cursor-pointer relative h-48 md:h-56 rounded-lg md:rounded-xl overflow-hidden bg-muted hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent group-hover:from-accent/40 transition-all duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center space-y-2">
+                      <h3 className="text-2xl md:text-3xl font-bold text-foreground">{category}</h3>
+                      <p className="text-sm text-muted-foreground">Explore collection</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-6 text-center space-y-6">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Join Our Newsletter</h2>
-          <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
-            Discover new drops, styling tips, and exclusive offers delivered to your inbox.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <section className="py-16 md:py-20 bg-primary text-primary-foreground">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center space-y-6 md:space-y-8">
+          <div className="space-y-2 md:space-y-3">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Join Our Newsletter</h2>
+            <p className="text-base md:text-lg text-primary-foreground/90 max-w-2xl mx-auto">
+              Discover new drops, styling tips, and exclusive offers delivered to your inbox.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-2 md:gap-3 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground text-primary placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-foreground"
+              className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground text-primary placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-foreground text-sm md:text-base"
             />
             <Button className="bg-primary-foreground hover:bg-primary-foreground/90 text-primary">Subscribe</Button>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-muted/50 border-t border-border">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h4 className="font-semibold mb-4">Shop</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    All Products
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    New Arrivals
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Sale
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Careers
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Shipping Info
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Returns
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    FAQ
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Follow</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    LinkedIn
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground">
-            <p>&copy; 2025 TENFINITY. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-accent transition-colors">
-                Privacy
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                Terms
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                Cookies
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

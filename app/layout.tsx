@@ -1,26 +1,36 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type React from "react"
+import type { Metadata } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import { CartProvider } from "@/lib/cart-context"
+import { WishlistProvider } from "@/lib/wishlist-context"
+import { AuthProvider } from "@/lib/auth-context"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const _geist = Geist({ subsets: ["latin"] })
+const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: "TENFINITY - Minimal. Crafted. Eternal.",
+  description: "Modern essentials built to last. Premium materials, timeless silhouettes.",
+  generator: "v0.app",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        {children}
+        <CartProvider>
+          <WishlistProvider>
+            <AuthProvider>
+              <Header />
+              {children}
+              <Footer />
+            </AuthProvider>
+          </WishlistProvider>
+        </CartProvider>
         <Analytics />
       </body>
     </html>
