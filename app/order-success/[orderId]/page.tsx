@@ -1,24 +1,29 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { CheckCircle, Package, Truck } from "lucide-react"
-import Link from "next/link"
-import { useEffect, useState } from "react"
+import { Button } from "@/components/ui/button";
+import { CheckCircle, Package, Truck } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
-export default function OrderSuccessPage({ params }: { params: { orderId: string } }) {
-  const [order, setOrder] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
+export default function OrderSuccessPage() {
+  const params = useParams();
+  const orderId = params?.orderId as string;
+
+  const [order, setOrder] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const orders = JSON.parse(localStorage.getItem("tenfinity-orders") || "[]")
-    const currentOrder = orders.find((o: any) => o.orderId === params.orderId)
-    setOrder(currentOrder)
-    setLoading(false)
+    if (!orderId) return;
+    const orders = JSON.parse(localStorage.getItem("tenfinity-orders") || "[]");
+    const currentOrder = orders.find((o: any) => o.orderId === orderId);
+    setOrder(currentOrder);
+    setLoading(false);
 
     if (currentOrder) {
-      console.log("[v0] Order retrieved:", currentOrder)
+      console.log("[v0] Order retrieved:", currentOrder);
     }
-  }, [params.orderId])
+  }, [orderId]);
 
   if (loading) {
     return <div className="min-h-screen bg-background flex items-center justify-center">Loading...</div>

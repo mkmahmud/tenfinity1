@@ -273,40 +273,41 @@ export default function CartPage() {
                     </label>
 
                     <label
-                      className="flex items-center p-3 rounded-lg border-2 cursor-pointer transition-all"
-                      style={{ borderColor: paymentMethod === "card" ? "var(--accent)" : "var(--border)" }}
+                      className="flex items-center p-3 rounded-lg border-2 cursor-not-allowed transition-all"
+                      style={{ borderColor: "var(--border)" }}
                     >
                       <input
                         type="radio"
                         name="payment"
                         value="card"
                         checked={paymentMethod === "card"}
-                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        disabled
                         className="mr-3"
                       />
                       <div>
-                        <p className="font-semibold text-sm">Credit/Debit Card</p>
+                        <p className="font-semibold text-sm text-gray-500">Credit/Debit Card</p>
                         <p className="text-xs text-muted-foreground">Secure payment with your card</p>
                       </div>
                     </label>
 
                     <label
-                      className="flex items-center p-3 rounded-lg border-2 cursor-pointer transition-all"
-                      style={{ borderColor: paymentMethod === "bkash" ? "var(--accent)" : "var(--border)" }}
+                      className="flex items-center p-3 rounded-lg border-2 cursor-not-allowed transition-all"
+                      style={{ borderColor: "var(--border)" }}
                     >
                       <input
                         type="radio"
                         name="payment"
                         value="bkash"
                         checked={paymentMethod === "bkash"}
-                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        disabled
                         className="mr-3"
                       />
                       <div>
-                        <p className="font-semibold text-sm">bKash</p>
+                        <p className="font-semibold text-sm text-gray-500">bKash</p>
                         <p className="text-xs text-muted-foreground">Mobile wallet payment</p>
                       </div>
                     </label>
+
                   </div>
                 </div>
 

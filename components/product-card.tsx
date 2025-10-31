@@ -4,11 +4,12 @@ import type React from "react"
 
 import type { Product } from "@/lib/products"
 import { Button } from "@/components/ui/button"
-import { ShoppingBag, Star, Heart } from "lucide-react"
+import { ShoppingBag, Star, Heart, BugPlayIcon, ShoppingBasket } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "@/lib/cart-context"
 import { useWishlist } from "@/lib/wishlist-context"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 interface ProductCardProps {
   product: Product
@@ -35,6 +36,16 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
     })
     setAddedToCart(true)
     setTimeout(() => setAddedToCart(false), 2000)
+  }
+
+  const router = useRouter();
+
+  const handleShopNow = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    handleAddToCart(e)
+    // Here you can add additional logic for "Shop Now", like redirecting to checkout
+    router.push('/cart');
   }
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
@@ -66,7 +77,7 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
 
   return (
     <Link href={`/products/${product.id}`}>
-      <div className="group cursor-pointer h-full flex flex-col">
+      <div className="group cursor-pointer h-full flex flex-col border border-transparent hover:border-gray-200 hover:shadow-lg transition-all duration-300 rounded-xl bg-white">
         {/* Image Container */}
         <div className="relative h-80 md:h-96 bg-muted rounded-xl overflow-hidden mb-4">
           <img
@@ -89,20 +100,19 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
             </div>
           )}
 
-          {/* Wishlist Button - Added wishlist heart button */}
+          {/* Wishlist Button */}
           <button
             onClick={handleWishlistToggle}
             className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all duration-300 transform hover:scale-110 z-20"
             aria-label="Add to wishlist"
           >
             <Heart
-              className={`w-5 h-5 transition-all duration-300 ${
-                inWishlist ? "fill-red-500 text-red-500" : "text-gray-600"
-              }`}
+              className={`w-5 h-5 transition-all duration-300 ${inWishlist ? "fill-red-500 text-red-500" : "text-gray-600"
+                }`}
             />
           </button>
 
-          {/* Quick Add Button (on hover) */}
+          {/* Quick Add Button */}
           {showQuickAdd && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <Button onClick={handleAddToCart} className="bg-white text-black hover:bg-white/90 gap-2">
@@ -113,9 +123,9 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
           )}
         </div>
 
-        {/* Product Info - Wrapped in clickable div to navigate to product details */}
+        {/* Product Info */}
         <div
-          className="flex-1 flex flex-col gap-3 cursor-pointer"
+          className="flex-1 flex flex-col gap-3 cursor-pointer p-2"
           onClick={(e) => {
             e.preventDefault()
           }}
@@ -148,9 +158,8 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
                   e.stopPropagation()
                   setSelectedColor(color)
                 }}
-                className={`w-5 h-5 rounded-full border-2 transition-all ${
-                  selectedColor === color ? "border-foreground" : "border-border"
-                } ${colorMap[color] || "bg-gray-400"}`}
+                className={`w-5 h-5 rounded-full border-2 transition-all ${selectedColor === color ? "border-foreground" : "border-border"
+                  } ${colorMap[color] || "bg-gray-400"}`}
                 title={color}
               />
             ))}
@@ -160,11 +169,32 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
           <div className="flex items-center gap-2 mt-auto">
             <span className="text-xl font-bold">${product.price}</span>
             {product.originalPrice && (
-              <span className="text-sm text-muted-foreground line-through">${product.originalPrice}</span>
+              <span className="text-sm text-muted-foreground line-through">
+                ${product.originalPrice}
+              </span>
             )}
+          </div>
+
+          {/* Buttons */}
+          <div className="flex gap-3 w-full">
+            <Button
+              onClick={handleShopNow}
+              className="flex-1 bg-white text-black hover:text-white hover:bg-green-500/80 gap-2 cursor-pointer"
+            >
+              <ShoppingBasket className="w-4 h-4" />
+              Buy Now
+            </Button>
+            <Button
+              onClick={handleAddToCart}
+              className="flex-1 bg-white text-black hover:bg-white/90 gap-2 cursor-pointer"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              {addedToCart ? "Added!" : "Add to Cart"}
+            </Button>
           </div>
         </div>
       </div>
+
     </Link>
   )
 }

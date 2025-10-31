@@ -2,8 +2,10 @@
 
 import { Button } from "@/components/ui/button"
 import { ProductCard } from "@/components/product-card"
-import { ArrowRight, Sparkles, Star } from "lucide-react"
+import { ArrowRight, Sparkles, Star, Truck, MapPin } from "lucide-react"
 import { products, testimonials } from "@/lib/products"
+import Image from "next/image"
+import { motion } from "framer-motion";
 
 export default function Home() {
   const featuredProducts = products.slice(0, 4)
@@ -13,100 +15,172 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-16 md:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent" />
 
-        <div className="absolute top-20 right-20 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-pulse opacity-40" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse opacity-30" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <section className="relative min-h-screen flex items-center px-6 lg:px-20 py-16 bg-background text-foreground overflow-hidden">
+
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto  ">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
             {/* Left Content */}
-            <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000">
-              <div className="space-y-3 md:space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 md:px-4 py-2 bg-secondary/10 border border-secondary/30 rounded-full hover:border-secondary/50 transition-all duration-300">
-                  <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-accent animate-spin-slow" />
-                  <span className="text-xs md:text-sm font-medium text-secondary">New Collection Spring 25</span>
-                </div>
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="space-y-6 relative"
+            >
+              {/* Small circular image top left */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="absolute -top-8 left-0 w-20 h-20 rounded-full overflow-hidden border-4 border-background shadow-lg"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&h=400&fit=crop"
+                  alt="Fashion"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-balance leading-tight">
-                  Minimal.
+              <div className="pt-16">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                  Spring Summer
                   <br />
-                  Crafted.
-                  <br />
-                  <span className="inline-block bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-                    Eternal.
-                  </span>
+                  New Arrival
                 </h1>
-              </div>
 
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-                Modern essentials built to last. Premium materials, timeless silhouettes. Explore the new collection
-                with elevated basics designed for real life.
-              </p>
+                <p className="text-muted-foreground text-base max-w-md mb-2">
+                  New collection Inspired by New Lifestyle to bring ideas life
+                </p>
+                <p className="text-muted-foreground text-base max-w-md mb-8">
+                  Placing the power of design in everyone's hands.
+                </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 group transition-all duration-300 transform hover:scale-105"
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3.5 bg-foreground text-background font-semibold rounded-md shadow-lg hover:shadow-xl transition-all"
                 >
-                  Shop Collection
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-border hover:bg-muted bg-transparent transition-all duration-300 transform hover:scale-105"
+                  SHOP NOW
+                </motion.button>
+              </div>
+
+              {/* Stats at bottom */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="flex gap-12 pt-12"
+              >
+                <div>
+                  <p className="text-3xl font-bold">600+</p>
+                  <p className="text-sm text-muted-foreground">STORES</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold">160+</p>
+                  <p className="text-sm text-muted-foreground">CLIENTS</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold">2700+</p>
+                  <p className="text-sm text-muted-foreground">PRODUCT</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+              className="relative flex items-center justify-center"
+            >
+              {/* Background decorative circle */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[500px] h-[600px] bg-accent/20 rounded-[50%] rotate-12" />
+              </div>
+
+              {/* Main large oval image */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative z-10 w-[380px] h-[520px] rounded-[50%] overflow-hidden shadow-2xl"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&h=1000&fit=crop"
+                  alt="Fashion Model"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+
+              {/* Right side text and small image */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4"
+              >
+                {/* Decorative star */}
+                <div className="text-4xl">✱</div>
+
+                {/* Vertical text */}
+                <div className="flex flex-col items-center gap-1">
+                  <p className="text-lg font-bold tracking-wider" style={{ writingMode: 'vertical-rl' }}>
+                    INSPIRED
+                  </p>
+                  <p className="text-lg font-bold tracking-wider" style={{ writingMode: 'vertical-rl' }}>
+                    BY NEW
+                  </p>
+                  <p className="text-lg font-bold tracking-wider" style={{ writingMode: 'vertical-rl' }}>
+                    LIFESTYLE
+                  </p>
+                </div>
+
+                {/* Divider line */}
+                <div className="h-20 w-px bg-foreground/30" />
+
+                {/* Arrow */}
+                <div className="text-2xl">↓</div>
+
+                {/* Small circular image at bottom */}
+                <motion.div
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  className="w-32 h-32 rounded-full overflow-hidden border-4 border-background shadow-xl mt-4"
                 >
-                  Explore Lookbook
-                </Button>
-              </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=400&fit=crop"
+                    alt="Fashion"
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              </motion.div>
 
-              {/* Trust Indicators */}
-              <div className="space-y-2 md:space-y-3 pt-6 md:pt-8 border-t border-border animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-1000">
-                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors">
-                  <div className="w-1 h-1 bg-accent rounded-full" />
-                  <span>Free shipping over $100</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors">
-                  <div className="w-1 h-1 bg-accent rounded-full" />
-                  <span>Easy returns</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground hover:text-accent transition-colors">
-                  <div className="w-1 h-1 bg-accent rounded-full" />
-                  <span>Ethically made</span>
-                </div>
-              </div>
-            </div>
+              {/* Curved line decoration */}
+              <svg
+                className="absolute top-20 right-32 w-48 h-48 pointer-events-none"
+                viewBox="0 0 200 200"
+                fill="none"
+              >
+                <motion.path
+                  d="M 20 100 Q 100 20, 180 100"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="text-foreground/30"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1.5, delay: 0.8 }}
+                />
+              </svg>
+            </motion.div>
 
-            {/* Right - Featured Image */}
-            <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-xl md:rounded-2xl overflow-hidden group animate-in fade-in slide-in-from-right-8 duration-1000">
-              <div className="absolute inset-0 bg-gradient-to-b from-accent/20 to-accent/5 mix-blend-overlay" />
-              <img
-                src="/luxury-white-zip-up-hoodie-lifestyle-shot-premium-.jpg"
-                alt="Featured clothing product"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-
-              <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6 bg-white/95 backdrop-blur-sm rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg border border-white/20 transform transition-all duration-500 group-hover:translate-y-0 translate-y-2 opacity-0 group-hover:opacity-100">
-                <div className="flex items-center justify-between gap-2 md:gap-4">
-                  <div>
-                    <p className="text-xs md:text-sm font-semibold text-foreground">Premium Hoodie</p>
-                    <p className="text-lg md:text-2xl font-bold text-foreground">$148</p>
-                  </div>
-                  <Button
-                    size="sm"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground text-xs md:text-sm"
-                  >
-                    Add
-                  </Button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
+
+
 
       {/* Featured Products Section */}
       <section id="featured" className="py-16 md:py-20 bg-background">
