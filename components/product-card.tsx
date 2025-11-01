@@ -4,7 +4,7 @@ import type React from "react"
 
 import type { Product } from "@/lib/products"
 import { Button } from "@/components/ui/button"
-import { ShoppingBag, Star, Heart, BugPlayIcon, ShoppingBasket } from "lucide-react"
+import { ShoppingBag, Star, Heart, ShoppingBasket } from "lucide-react"
 import Link from "next/link"
 import { useCart } from "@/lib/cart-context"
 import { useWishlist } from "@/lib/wishlist-context"
@@ -26,6 +26,7 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    if (!product.inStock) return
     addToCart({
       productId: product.id,
       name: product.name,
@@ -43,8 +44,8 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
   const handleShopNow = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    if (!product.inStock) return
     handleAddToCart(e)
-    // Here you can add additional logic for "Shop Now", like redirecting to checkout
     router.push('/cart');
   }
 
@@ -112,13 +113,19 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
             />
           </button>
 
-          {/* Quick Add Button */}
+          {/* Quick Add / Stock Out */}
           {showQuickAdd && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <Button onClick={handleAddToCart} className="bg-white text-black hover:bg-white/90 gap-2">
-                <ShoppingBag className="w-4 h-4" />
-                {addedToCart ? "Added!" : "Add to Cart"}
-              </Button>
+              {product.inStock ? (
+                <Button onClick={handleAddToCart} className="bg-white text-black hover:bg-white/90 gap-2">
+                  <ShoppingBag className="w-4 h-4" />
+                  {addedToCart ? "Added!" : "Add to Cart"}
+                </Button>
+              ) : (
+                <div className="bg-red-600 text-white px-3 py-1.5 rounded-full font-semibold">
+                  Stock Out
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -167,10 +174,10 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
 
           {/* Price */}
           <div className="flex items-center gap-2 mt-auto">
-            <span className="text-xl font-bold">${product.price}</span>
+            <span className="text-xl font-bold">৳{product.price}</span>
             {product.originalPrice && (
               <span className="text-sm text-muted-foreground line-through">
-                ${product.originalPrice}
+                ৳{product.originalPrice}
               </span>
             )}
           </div>
@@ -179,14 +186,16 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
           <div className="flex gap-3 w-full">
             <Button
               onClick={handleShopNow}
-              className="flex-1 bg-white text-black hover:text-white hover:bg-green-500/80 gap-2 cursor-pointer"
+              disabled={!product.inStock}
+              className={`flex-1 bg-white text-black hover:text-white hover:bg-green-500/80 gap-2 cursor-pointer ${!product.inStock ? "opacity-50 cursor-not-allowed" : ""}`}
             >
               <ShoppingBasket className="w-4 h-4" />
               Buy Now
             </Button>
             <Button
               onClick={handleAddToCart}
-              className="flex-1 bg-white text-black hover:bg-white/90 gap-2 cursor-pointer"
+              disabled={!product.inStock}
+              className={`flex-1 bg-white text-black hover:bg-white/90 gap-2 cursor-pointer ${!product.inStock ? "opacity-50 cursor-not-allowed" : ""}`}
             >
               <ShoppingBag className="w-4 h-4" />
               {addedToCart ? "Added!" : "Add to Cart"}
@@ -194,7 +203,6 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
           </div>
         </div>
       </div>
-
     </Link>
   )
 }

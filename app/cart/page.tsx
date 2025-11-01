@@ -24,6 +24,11 @@ export default function CartPage() {
     zipCode: "",
   })
 
+  // Coupon code states
+  const [couponCode, setCouponCode] = useState("")
+  const [couponDiscount, setCouponDiscount] = useState(0)
+  const [couponError, setCouponError] = useState("")
+
   const total = getTotalPrice()
   const shipping = total > 100 ? 0 : 10
   const finalTotal = total + shipping
@@ -31,6 +36,23 @@ export default function CartPage() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setOrderDetails((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const applyCoupon = () => {
+    // Example: fixed coupon codes
+    const coupons: { [key: string]: number } = {
+      TEN10: 10, // $10 off
+      SAVE20: 20, // $20 off
+    }
+
+    const discount = coupons[couponCode.toUpperCase()]
+    if (discount && discount <= finalTotal) {
+      setCouponDiscount(discount)
+      setCouponError("")
+    } else {
+      setCouponDiscount(0)
+      setCouponError("Invalid or unusable coupon")
+    }
   }
 
   const handlePlaceOrder = () => {
@@ -47,7 +69,8 @@ export default function CartPage() {
       items: items,
       subtotal: total,
       shipping: shipping,
-      total: finalTotal,
+      discount: couponDiscount,
+      total: finalTotal - couponDiscount,
       paymentMethod: paymentMethod,
       status: "pending",
     }
@@ -116,7 +139,7 @@ export default function CartPage() {
                     <div>
                       <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
                       <p className="text-sm text-muted-foreground mb-3">Color: {item.color}</p>
-                      <p className="text-lg font-bold">${item.price}</p>
+                      <p className="text-lg font-bold">৳{item.price}</p>
                     </div>
 
                     {/* Quantity Control */}
@@ -152,7 +175,7 @@ export default function CartPage() {
                   </div>
 
                   {/* Subtotal */}
-                  <div className="font-bold text-lg sm:text-right">${(item.price * item.quantity).toFixed(2)}</div>
+                  <div className="font-bold text-lg sm:text-right">৳{(item.price * item.quantity).toFixed(2)}</div>
                 </div>
               ))}
             </div>
@@ -165,19 +188,46 @@ export default function CartPage() {
               <div className="bg-muted/30 rounded-lg p-6 space-y-4">
                 <h3 className="font-semibold text-lg">Order Summary</h3>
 
+                {/* Coupon Code Input */}
+                <div className="flex gap-2 items-center">
+                  <input
+                    type="text"
+                    placeholder="Coupon Code"
+                    value={couponCode}
+                    onChange={(e) => setCouponCode(e.target.value)}
+                    className="flex-1 px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                  />
+                  <button
+                    onClick={applyCoupon}
+                    className="px-3 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 text-sm"
+                  >
+                    Apply
+                  </button>
+                </div>
+                {couponError && <p className="text-xs text-destructive">{couponError}</p>}
+                {couponDiscount > 0 && (
+                  <p className="text-xs text-accent">Coupon applied! You saved ৳{couponDiscount.toFixed(2)}</p>
+                )}
+
                 <div className="space-y-3 border-t border-border pt-4">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Subtotal</span>
-                    <span className="font-medium">${total.toFixed(2)}</span>
+                    <span className="font-medium">৳{total.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Shipping</span>
                     <span className="font-medium">{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
                   </div>
                   {shipping === 0 && <p className="text-xs text-accent">Free shipping applied!</p>}
+                  {couponDiscount > 0 && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Discount</span>
+                      <span className="font-medium">-৳{couponDiscount.toFixed(2)}</span>
+                    </div>
+                  )}
                   <div className="border-t border-border pt-3 flex justify-between font-bold">
                     <span>Total</span>
-                    <span className="text-xl">${finalTotal.toFixed(2)}</span>
+                    <span className="text-xl">৳{(finalTotal - couponDiscount).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
@@ -250,7 +300,7 @@ export default function CartPage() {
                   className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
                 />
 
-                {/* Payment Methods - Added multiple payment options */}
+                {/* Payment Methods */}
                 <div className="pt-4 border-t border-border">
                   <p className="text-sm font-medium mb-3">Payment Method</p>
                   <div className="space-y-2">
@@ -307,7 +357,6 @@ export default function CartPage() {
                         <p className="text-xs text-muted-foreground">Mobile wallet payment</p>
                       </div>
                     </label>
-
                   </div>
                 </div>
 

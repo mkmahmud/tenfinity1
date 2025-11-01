@@ -31,21 +31,21 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email",
-      details: "support@tenfinity.com",
+      details: "tenfinity2@gmail.com",
       description: "We'll respond within 24 hours",
-      link: "mailto:support@tenfinity.com",
+      link: "mailto:tenfinity2@gmail.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      details: "+1 (555) 123-4567",
+      details: "+880 1624 572921",
       description: "Mon-Fri, 9AM-6PM EST",
-      link: "tel:+15551234567",
+      link: "tel:+8801624572921",
     },
     {
       icon: MapPin,
       title: "Visit Us",
-      details: "123 Fashion Street, NY 10001",
+      details: "Mirpur, Dhaka, Bangladesh",
       description: "Our flagship store",
       link: "#",
     },
@@ -62,7 +62,7 @@ export default function ContactPage() {
     {
       question: "What is your shipping policy?",
       answer:
-        "We offer free shipping on orders over $100 with 3-5 business day delivery. Express shipping options available.",
+        "We offer free shipping on orders over  ৳1000 with 3-5 business day delivery. Express shipping options available.",
     },
     {
       question: "Can I return my order?",

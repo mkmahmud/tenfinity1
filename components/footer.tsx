@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, ArrowUp } from "lucide-react"
+import { Mail, Phone, MapPin, Instagram, Twitter, Linkedin, ArrowUp, Facebook } from "lucide-react"
 import { useState } from "react"
 
 export function Footer() {
@@ -27,22 +27,29 @@ export function Footer() {
             </p>
             <div className="flex gap-3 pt-4">
               <a
-                href="#"
+                href="https://www.instagram.com/tenfinity2/"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-background/10 hover:bg-accent hover:text-foreground flex items-center justify-center transition-all duration-300 transform hover:scale-110"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/tenfinity2"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-background/10 hover:bg-accent hover:text-foreground flex items-center justify-center transition-all duration-300 transform hover:scale-110"
               >
-                <Twitter className="w-5 h-5" />
+                <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@tenfinity2?_r=1&_t=ZS-912RYlZaGN6"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-background/10 hover:bg-accent hover:text-foreground flex items-center justify-center transition-all duration-300 transform hover:scale-110"
               >
-                <Linkedin className="w-5 h-5" />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="24" height="24" fill="white">
+                  <path d="M194.4 72.3c-13.1-.6-25.7-5.2-36.1-12.7v67.5c0 31.6-25.6 57.3-57.3 57.3-31.6 0-57.3-25.6-57.3-57.3s25.6-57.3 57.3-57.3c7.3 0 14.3 1.3 20.9 3.8v-22.6c-6.8-1.8-14-2.7-21.5-2.7C61 40.3 24 77.2 24 120.7c0 43.5 35.4 78.8 78.8 78.8 43.5 0 78.8-35.4 78.8-78.8V70.9c9.7 7.4 21.7 11.4 34.4 11.4V72.3z" />
+                </svg>
+
+
               </a>
             </div>
           </div>
@@ -137,15 +144,15 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex gap-3 text-background/80 hover:text-accent transition-colors">
                 <Mail className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <a href="mailto:support@tenfinity.com">support@tenfinity.com</a>
+                <a href="mailto:support@tenfinity.com">tenfinity2@gmail.com</a>
               </li>
               <li className="flex gap-3 text-background/80 hover:text-accent transition-colors">
                 <Phone className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                <a href="tel:+15551234567">+880 1624 572921</a>
               </li>
               <li className="flex gap-3 text-background/80">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>123 Fashion Street, NY 10001</span>
+                <span>Mirpur, Dhaka, Bangladesh</span>
               </li>
             </ul>
           </div>

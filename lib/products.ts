@@ -29,7 +29,7 @@ export const products: Product[] = [
     colors: ["white", "black", "navy", "sage"],
     rating: 4.8,
     reviews: 124,
-    inStock: true,
+    inStock: false,
     isNew: true,
     isSale: true,
     discount: 18,

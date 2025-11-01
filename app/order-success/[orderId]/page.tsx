@@ -127,7 +127,7 @@ export default function OrderSuccessPage() {
                   <span>
                     {item.name} (x{item.quantity})
                   </span>
-                  <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="font-medium"> ৳{(item.price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
@@ -138,7 +138,7 @@ export default function OrderSuccessPage() {
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span>${order.subtotal.toFixed(2)}</span>
+                <span> ৳{order.subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Shipping</span>
@@ -146,7 +146,7 @@ export default function OrderSuccessPage() {
               </div>
               <div className="flex justify-between font-bold text-lg pt-2 border-t border-border">
                 <span>Total</span>
-                <span>${order.total.toFixed(2)}</span>
+                <span> ৳{order.total.toFixed(2)}</span>
               </div>
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function OrderSuccessPage() {
             <div className="p-4 bg-accent/10 rounded-lg border border-accent/20">
               <p className="font-semibold">Cash on Delivery</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Please pay the amount upon delivery: ${order.total.toFixed(2)}
+                Please pay the amount upon delivery:  ৳{order.total.toFixed(2)}
               </p>
             </div>
           </div>

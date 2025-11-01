@@ -69,24 +69,30 @@ export default function Home() {
 
               {/* Stats at bottom */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                className="flex gap-12 pt-12"
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+                className=" mt-10 flex flex-row items-center gap-6"
               >
-                <div>
-                  <p className="text-3xl font-bold">600+</p>
-                  <p className="text-sm text-muted-foreground">STORES</p>
+                {/* Decorative star */}
+                <div className="text-4xl">✱</div>
+
+                {/* Horizontal text */}
+                <div className="flex flex-row items-center gap-4">
+                  <p className="text-lg font-bold tracking-wider">INSPIRED</p>
+                  <p className="text-lg font-bold tracking-wider">BY NEW</p>
+                  <p className="text-lg font-bold tracking-wider">LIFESTYLE</p>
                 </div>
-                <div>
-                  <p className="text-3xl font-bold">160+</p>
-                  <p className="text-sm text-muted-foreground">CLIENTS</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold">2700+</p>
-                  <p className="text-sm text-muted-foreground">PRODUCT</p>
-                </div>
+
+                {/* Divider line */}
+                <div className="h-px w-20 bg-foreground/30" />
+
+                {/* Arrow */}
+                <div className="text-2xl">→</div>
+
+
               </motion.div>
+
             </motion.div>
 
             {/* Right Content */}

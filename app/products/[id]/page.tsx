@@ -167,16 +167,16 @@ export default function ProductDetailPage() {
             {/* Price */}
             <div className="space-y-2">
               <div className="flex items-center gap-3">
-                <span className="text-3xl md:text-4xl font-bold">${product.price}</span>
+                <span className="text-3xl md:text-4xl font-bold">৳{product.price}</span>
                 {product.originalPrice && (
                   <span className="text-xl md:text-2xl text-muted-foreground line-through">
-                    ${product.originalPrice}
+                    ৳{product.originalPrice}
                   </span>
                 )}
               </div>
               {product.discount && (
                 <p className="text-accent font-semibold">
-                  Save ${(product.originalPrice! - product.price).toFixed(2)} ({product.discount}%)
+                  Save ৳{(product.originalPrice! - product.price).toFixed(2)} ({product.discount}%)
                 </p>
               )}
             </div>
@@ -310,8 +310,8 @@ export default function ProductDetailPage() {
               <div className="flex items-center gap-3">
                 <Truck className="w-5 h-5 text-accent" />
                 <div>
-                  <p className="font-semibold text-sm">Free shipping over $100</p>
-                  <p className="text-xs text-muted-foreground">On orders over $100</p>
+                  <p className="font-semibold text-sm">Free shipping over ৳100</p>
+                  <p className="text-xs text-muted-foreground">On orders over ৳100</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">

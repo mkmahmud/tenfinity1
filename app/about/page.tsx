@@ -11,8 +11,7 @@ export default function AboutPage() {
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">About TENFINITY</h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl">
-              We believe in timeless fashion that transcends trends. Our mission is to create minimal, thoughtfully
-              crafted essentials that stand the test of time.
+              Fashion Without Limits: Redefining Style, Empowering Individuality, and Inspiring Confidence in Every Outfit
             </p>
           </div>
         </div>
@@ -24,12 +23,13 @@ export default function AboutPage() {
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
             <p className="text-muted-foreground leading-relaxed">
-              TENFINITY was founded with a simple belief: quality over quantity. In a world of fast fashion, we chose to
-              go against the grain and create pieces that matter.
+              TENFINITY started with a simple idea: fashion should be limitless. Founded by a team passionate about creativity and style, we wanted to create a brand that not only offers clothing but inspires confidence, individuality, and self-expression.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Every product is carefully designed and crafted to last. We use premium materials sourced responsibly and
-              manufacture ethically.
+              From the first sketch to the final stitch, every piece is designed with care, blending modern trends with timeless elegance. We believe that every outfit tells a story, and with TENFINITY, that story is yours to create.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Our journey is fueled by the love for fashion, attention to detail, and the desire to make every customer feel unique. TENFINITY isn’t just about what you wear—it’s about who you are.
             </p>
           </div>
           <div className="bg-muted rounded-lg h-96" />
