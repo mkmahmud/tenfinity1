@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button"
 import { ProductCard } from "@/components/product-card"
-import { ArrowRight, Sparkles, Star, Truck, MapPin } from "lucide-react"
+import { ArrowRight, Star, } from "lucide-react"
 import { products, testimonials } from "@/lib/products"
-import Image from "next/image"
+ 
 import { motion } from "framer-motion";
 
 export default function Home() {

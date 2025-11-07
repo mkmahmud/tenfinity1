@@ -139,9 +139,11 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
         >
           <div className="flex items-start justify-between gap-2">
             <div className="flex-1">
-              <h3 className="font-semibold text-lg group-hover:text-accent transition-colors truncate">
-                {product.name}
-              </h3>
+              <Link href={`/products/${product.id}`}>
+                <h3 className="font-semibold text-lg group-hover:text-accent transition-colors  ">
+                  {product.name}
+                </h3>
+              </Link>
               <p className="text-sm text-muted-foreground line-clamp-2">{product.description}</p>
             </div>
           </div>

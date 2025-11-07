@@ -6,6 +6,7 @@ export interface Product {
   originalPrice?: number
   description: string
   image: string
+  allImages?: string[]
   category: "Tops" | "Shirts" | "Pants" | "Outerwear"
   colors: string[]
   rating: number
@@ -14,170 +15,179 @@ export interface Product {
   isNew?: boolean
   isSale?: boolean
   discount?: number
+  longDescription?: string;
+  specs?: {
+    fabric: string; // Fabric type (e.g., "One-side brush fleece")
+    gsm: string; // GSM value (e.g., "350+ GSM")
+    size: string[]; // Size options (e.g., ["M (40)", "L (42)", "XL (44)", "2XL (46)"])
+    weatherSuitability: string; // Use cases (e.g., "Cold weather, casual outings, everyday use")
+  };
 }
 
 export const products: Product[] = [
   {
     id: "1",
-    name: "Premium White Hoodie",
-    price: 148,
-    originalPrice: 180,
+    name: "প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM ",
+    price: 700,
+    originalPrice: 1000,
     description:
-      "Luxury zip-up hoodie crafted from premium cotton blend. Perfect for everyday wear with a modern silhouette.",
-    image: "/luxury-white-zip-up-hoodie-lifestyle-shot-premium-.jpg",
+      " ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।",
+
+    image: "/images/1.png",
+    allImages: ["/images/1.png", "/images/2.jpg", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
     category: "Outerwear",
-    colors: ["white", "black", "navy", "sage"],
+    colors: ["black", "navy", "sage"],
     rating: 4.8,
-    reviews: 124,
-    inStock: false,
+    reviews: 0,
+    inStock: true,
     isNew: true,
     isSale: true,
-    discount: 18,
+    discount: 30,
+    specs: {
+      fabric: "One-side brush fleece",
+      gsm: "350+ GSM",
+      size: ["M (40)", "L (42)", "XL (44)", "2XL (46)"],
+      weatherSuitability: "Cold weather, casual outings, everyday use",
+    },
+    longDescription: `প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM | Limited Stock
+
+ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।
+
+GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় দীর্ঘস্থায়ী ব্যবহার।
+
+কালার: কালো | নেভি | মেরুন — সলিড, প্রিমিয়াম টোনে।
+
+সাইজ: M (40) • L (42) • XL (44) • 2XL (46) — একদম বাস্তব মাপ অনুযায়ী।
+
+ব্যবহারে উপযোগী: ঠান্ডা আবহাওয়া, ক্যাজুয়াল আউটিং, দৈনন্দিন ব্যবহার বা ভ্রমণে।
+
+স্টক: সীমিত — দ্রুত অর্ডার করুন।
+
+✨ আমাদের অঙ্গীকার — কোয়ালিটি ফার্স্ট
+
+এক কথায়, আমরা আমাদের পোশাকে মূল ফোকাস দিয়েছি কোয়ালিটিতে।
+আলহামদুলিল্লাহ, আমরা এতটুকু নিশ্চয়তা দিতে পারি — ইনশাল্লাহ, ঠকবেন না। আমরা কথায় না কাজে বিশ্বাসী।
+প্রতিটি হুডি তৈরি করা হয়েছে নিখুঁত কারিগরি ও উচ্চমানের ফ্যাব্রিক দিয়ে, যাতে আপনি পান আরাম, স্টাইল আর আত্মবিশ্বাস—সব একসাথে।
+
+আমরা বুঝি, কোয়ালিটি প্রোডাক্ট না হলে আত্মবিশ্বাসও কমে যায়।
+আর তাই, নিজেকে আরও একধাপ এগিয়ে উপস্থাপন করতে হলে একটা কোয়ালিটি ফুল পোশাকই আপনার সিগনেচার হতে পারে।
+
+স্টক বর্তমানে খুবই সীমিত। ইনশাল্লাহ, রিস্টক হবে, তবে এখনই অর্ডার করলে পাবেন প্রিমিয়াম ব্যাচের পোশাক`
+
   },
   {
     id: "2",
-    name: "Classic Oversized Tee",
-    price: 68,
-    description: "Timeless oversized t-shirt in soft organic cotton. Minimal design meets maximum comfort.",
-    image: "/oversized-classic-white-tee.jpg",
-    category: "Shirts",
-    colors: ["white", "black", "cream", "navy"],
+    name: "Slim Fit Cotton Pants — Daily Wear",
+    price: 650,
+    originalPrice: 900,
+    description:
+      "ফ্যাব্রিক: Cotton blend — আরামদায়ক, স্ট্রেচ এবং টেকসই।",
+    image: "/minimal-cargo-pants-black.jpg",
+    category: "Pants",
+    colors: ["black", "gray", "navy"],
     rating: 4.7,
-    reviews: 89,
-    inStock: true,
+    reviews: 0,
+    inStock: false,
+    isNew: true,
+    isSale: true,
+    discount: 28,
+    specs: {
+      fabric: "Cotton blend",
+      gsm: "220+ GSM",
+      size: ["M (32)", "L (34)", "XL (36)", "2XL (38)"],
+      weatherSuitability: "Daily wear, casual outings",
+    },
+    longDescription: `Slim Fit Cotton Pants — Daily Wear | Limited Stock
+
+ফ্যাব্রিক: Cotton blend — আরামদায়ক, স্ট্রেচ এবং টেকসই।
+
+কালার: কালো | ধূসর | নেভি — Neutral and versatile tones।
+
+সাইজ: M (32) • L (34) • XL (36) • 2XL (38) — Perfect slim fit।
+
+ব্যবহারে উপযোগী: দৈনন্দিন ব্যবহার, ক্যাজুয়াল আউটিং বা ভ্রমণ।
+
+স্টক: সীমিত — দ্রুত অর্ডার করুন।
+
+✨ আমাদের অঙ্গীকার — Comfort & Style
+
+প্রতিটি প্যান্ট তৈরি করা হয়েছে উচ্চমানের কাপড় দিয়ে, যাতে আপনি পান আরাম এবং স্টাইল একসাথে।`,
   },
   {
     id: "3",
-    name: "Minimal Cargo Pants",
-    price: 128,
-    originalPrice: 150,
-    description: "Structured cargo pants with clean lines. Premium fabric with functional details.",
-    image: "/minimal-cargo-pants-black.jpg",
-    category: "Pants",
-    colors: ["black", "olive", "navy", "cream"],
-    rating: 4.6,
-    reviews: 76,
-    inStock: true,
+    name: "Formal Cotton Shirt — Office Ready",
+    price: 780,
+    originalPrice: 1100,
+    description:
+      "ফ্যাব্রিক: Premium cotton — নরম, টেকসই, প্রফেশনাল ফিনিশ।",
+    image: "/silk-blend-shirt-cream.jpg",
+    category: "Shirts",
+    colors: ["white", "light blue", "gray"],
+    rating: 4.9,
+    reviews: 0,
+    inStock: false,
+    isNew: true,
     isSale: true,
-    discount: 15,
+    discount: 29,
+    specs: {
+      fabric: "Premium cotton",
+      gsm: "200+ GSM",
+      size: ["M (40)", "L (42)", "XL (44)", "2XL (46)"],
+      weatherSuitability: "Office, casual, formal events",
+    },
+    longDescription: `Formal Cotton Shirt — Office Ready | Limited Stock
+
+ফ্যাব্রিক: Premium cotton — নরম, টেকসই, প্রফেশনাল ফিনিশ।
+
+কালার: সাদা | লাইট ব্লু | ধূসর — Professional office tones।
+
+সাইজ: M (40) • L (42) • XL (44) • 2XL (46) — Perfect formal fit।
+
+ব্যবহারে উপযোগী: অফিস, ক্যাজুয়াল বা ফর্মাল ইভেন্টস।
+
+স্টক: সীমিত — দ্রুত অর্ডার করুন।
+
+✨ আমাদের অঙ্গীকার — Premium Formal Wear
+
+উচ্চমানের কাপড় এবং Perfect fit, যাতে আপনি অফিস বা ফর্মাল ইভেন্টে আত্মবিশ্বাসী থাকেন।`,
   },
   {
     id: "4",
-    name: "Essential Oxford Shirt",
-    price: 98,
-    description: "Crisp oxford button-up in premium cotton. Versatile for any occasion.",
-    image: "/oxford-shirt-white-minimal.jpg",
-    category: "Shirts",
-    colors: ["white", "blue", "cream", "black"],
-    rating: 4.8,
-    reviews: 102,
-    inStock: true,
-    isNew: true,
-  },
-  {
-    id: "5",
-    name: "Wide Leg Trousers",
-    price: 138,
-    description: "Elevated wide-leg silhouette in refined fabric. Modern tailoring meets comfort.",
+    name: "Wide Leg Trousers - Black  ",
+    price: 720,
+    originalPrice: 950,
+    description:
+      "ফ্যাব্রিক: Soft cotton blend — আরামদায়ক, মুভমেন্ট ফ্রেন্ডলি।",
     image: "/wide-leg-trousers-black.jpg",
     category: "Pants",
-    colors: ["black", "charcoal", "navy", "cream"],
-    rating: 4.7,
-    reviews: 68,
-    inStock: true,
-  },
-  {
-    id: "6",
-    name: "Minimal Bomber Jacket",
-    price: 178,
-    originalPrice: 220,
-    description: "Contemporary bomber jacket in technical fabric. Designed for modern living.",
-    image: "/bomber-jacket-black-minimal.jpg",
-    category: "Outerwear",
-    colors: ["black", "navy", "olive", "sage"],
-    rating: 4.9,
-    reviews: 95,
-    inStock: true,
-    isNew: true,
-    isSale: true,
-    discount: 19,
-  },
-  {
-    id: "7",
-    name: "Crew Neck Sweater",
-    price: 88,
-    description: "Cozy crew neck sweater in premium knit. Perfect for layering or standalone.",
-    image: "/cream-crew-neck-sweater.jpg",
-    category: "Tops",
-    colors: ["cream", "navy", "charcoal", "sage"],
+    colors: ["beige", "olive", "gray"],
     rating: 4.6,
-    reviews: 71,
-    inStock: true,
-  },
-  {
-    id: "8",
-    name: "Tailored Blazer",
-    price: 248,
-    description: "Sophisticated tailored blazer. Elevate any look with timeless elegance.",
-    image: "/black-tailored-blazer.jpg",
-    category: "Outerwear",
-    colors: ["black", "navy", "charcoal"],
-    rating: 4.8,
-    reviews: 54,
-    inStock: true,
-    isNew: true,
-  },
-  {
-    id: "9",
-    name: "Relaxed Fit Jeans",
-    price: 118,
-    description: "Premium denim in relaxed fit. Timeless style meets modern comfort.",
-    image: "/relaxed-fit-jeans-blue.jpg",
-    category: "Pants",
-    colors: ["indigo", "black", "charcoal"],
-    rating: 4.7,
-    reviews: 103,
-    inStock: true,
-  },
-  {
-    id: "10",
-    name: "Minimalist Tank Top",
-    price: 48,
-    description: "Essential tank top in breathable cotton. Versatile wardrobe staple.",
-    image: "/minimalist-white-tank-top.jpg",
-    category: "Tops",
-    colors: ["white", "black", "navy", "sage"],
-    rating: 4.5,
-    reviews: 45,
-    inStock: true,
-  },
-  {
-    id: "11",
-    name: "Wool Blend Coat",
-    price: 298,
-    originalPrice: 350,
-    description: "Luxurious wool blend coat. Investment piece for timeless style.",
-    image: "/wool-blend-coat-black.jpg",
-    category: "Outerwear",
-    colors: ["black", "navy", "cream"],
-    rating: 4.9,
-    reviews: 62,
-    inStock: true,
+    reviews: 0,
+    inStock: false,
     isNew: true,
     isSale: true,
-    discount: 15,
-  },
-  {
-    id: "12",
-    name: "Silk Blend Shirt",
-    price: 168,
-    description: "Luxurious silk blend shirt. Premium comfort and elegance combined.",
-    image: "/silk-blend-shirt-cream.jpg",
-    category: "Shirts",
-    colors: ["cream", "black", "white", "sage"],
-    rating: 4.8,
-    reviews: 51,
-    inStock: true,
+    discount: 25,
+    specs: {
+      fabric: "Soft cotton blend",
+      gsm: "230+ GSM",
+      size: ["M (32)", "L (34)", "XL (36)", "2XL (38)"],
+      weatherSuitability: "Casual, daily wear, outdoor",
+    },
+    longDescription: `Casual Chinos Pants — Everyday Style | Limited Stock
+
+ফ্যাব্রিক: Soft cotton blend — আরামদায়ক, মুভমেন্ট ফ্রেন্ডলি।
+
+কালার: বেজ | অলিভ | ধূসর — Neutral casual tones।
+
+সাইজ: M (32) • L (34) • XL (36) • 2XL (38) — Perfect casual fit।
+
+ব্যবহারে উপযোগী: ক্যাজুয়াল আউটিং, দৈনন্দিন ব্যবহার বা ভ্রমণ।
+
+স্টক: সীমিত — দ্রুত অর্ডার করুন।
+
+✨ আমাদের অঙ্গীকার — Everyday Comfort
+
+প্রতিটি প্যান্ট তৈরি করা হয়েছে উচ্চমানের কাপড় দিয়ে, যাতে আপনি পান আরাম এবং স্টাইল একসাথে।`,
   },
 ]
 

@@ -216,7 +216,7 @@ export default function CartPage() {
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Shipping</span>
-                    <span className="font-medium">{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                    <span className="font-medium">{shipping === 0 ? "Free" : `৳${shipping.toFixed(2)}`}</span>
                   </div>
                   {shipping === 0 && <p className="text-xs text-accent">Free shipping applied!</p>}
                   {couponDiscount > 0 && (

@@ -10,6 +10,20 @@ import Link from "next/link"
 import { useParams } from "next/navigation"
 import { useState } from "react"
 
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+
+import './page.module.css';
+
+// import required modules
+import { EffectCards } from 'swiper/modules';
+
+
 export default function ProductDetailPage() {
   const params = useParams()
   const productId = params?.id as string
@@ -117,14 +131,39 @@ export default function ProductDetailPage() {
           {/* Left - Product Image */}
           <div className="flex flex-col gap-4">
             <div className="relative bg-muted rounded-xl overflow-hidden h-96 md:h-[600px]">
-              <img
+              {/* <img
                 src={product.image || "/placeholder.svg"}
                 alt={product.name}
                 className="w-full h-full object-cover"
-              />
+              /> */}
+
+              {
+                product.allImages && (
+                  <Swiper
+                    effect={'cards'}
+                    grabCursor={true}
+                    modules={[EffectCards]}
+                    className="mySwiper"
+                  >
+                    {product.allImages.map((image, index) => (
+                      <SwiperSlide key={index}>
+                        <img
+                          src={image}
+                          alt={`${product.name} - Image ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                )
+              }
+
+
+
+
 
               {/* Badges */}
-              <div className="absolute top-4 left-4 space-y-2">
+              <div className="absolute top-4 left-4 space-y-2 z-10">
                 {product.isSale && product.discount && (
                   <div className="bg-accent text-accent-foreground px-3 py-1.5 rounded-full text-sm font-semibold">
                     -{product.discount}%
@@ -184,6 +223,7 @@ export default function ProductDetailPage() {
             {/* Description */}
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{product.description}</p>
 
+
             {/* Color Selection */}
             <div className="space-y-3">
               <label className="text-sm font-semibold">Color</label>
@@ -192,11 +232,10 @@ export default function ProductDetailPage() {
                   <button
                     key={color}
                     onClick={() => setSelectedColor(color)}
-                    className={`w-8 h-8 rounded-full border-2 transition-all ${
-                      selectedColor === color
-                        ? "border-foreground ring-2 ring-foreground ring-offset-2"
-                        : "border-border"
-                    } ${colorMap[color] || "bg-gray-400"}`}
+                    className={`w-8 h-8 rounded-full border-2 transition-all ${selectedColor === color
+                      ? "border-foreground ring-2 ring-foreground ring-offset-2"
+                      : "border-border"
+                      } ${colorMap[color] || "bg-gray-400"}`}
                     title={color}
                   />
                 ))}
@@ -249,11 +288,10 @@ export default function ProductDetailPage() {
                 <Button
                   onClick={handleWishlistToggle}
                   variant="outline"
-                  className={`border-2 h-12 transition-all ${
-                    inWishlist
-                      ? "border-red-500 bg-red-50 text-red-600 hover:bg-red-100"
-                      : "border-border hover:bg-muted bg-transparent"
-                  }`}
+                  className={`border-2 h-12 transition-all ${inWishlist
+                    ? "border-red-500 bg-red-50 text-red-600 hover:bg-red-100"
+                    : "border-border hover:bg-muted bg-transparent"
+                    }`}
                 >
                   <Heart className={`w-5 h-5 mr-2 ${inWishlist ? "fill-current" : ""}`} />
                   {inWishlist ? "Wishlisted" : "Wishlist"}
@@ -339,9 +377,8 @@ export default function ProductDetailPage() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`pb-4 px-2 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors ${
-                  activeTab === tab ? "border-primary text-foreground" : "border-transparent text-muted-foreground"
-                }`}
+                className={`pb-4 px-2 font-semibold text-sm md:text-base whitespace-nowrap border-b-2 transition-colors ${activeTab === tab ? "border-primary text-foreground" : "border-transparent text-muted-foreground"
+                  }`}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
@@ -351,19 +388,10 @@ export default function ProductDetailPage() {
           {/* Tab Content */}
           <div className="py-8 space-y-4">
             {activeTab === "description" && (
-              <div className="space-y-4 text-muted-foreground">
-                <p>{product.description}</p>
-                <p>
-                  This premium piece combines comfort and style with modern minimalist aesthetics. Crafted from the
-                  finest materials, it's designed to last through seasons of wear.
-                </p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>Premium materials sourced responsibly</li>
-                  <li>Timeless design that never goes out of style</li>
-                  <li>Perfect fit with attention to detail</li>
-                  <li>Versatile piece for any wardrobe</li>
-                </ul>
+              <div className="whitespace-pre-line text-muted-foreground">
+                {product.longDescription}
               </div>
+
             )}
 
             {activeTab === "specs" && (
@@ -371,15 +399,15 @@ export default function ProductDetailPage() {
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <p className="font-semibold text-foreground mb-2">Material</p>
-                    <p className="text-muted-foreground">Premium Cotton Blend</p>
+                    <p className="text-muted-foreground">{product?.specs?.fabric}</p>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground mb-2">Care</p>
-                    <p className="text-muted-foreground">Machine wash cold, lay flat to dry</p>
+                    <p className="font-semibold text-foreground mb-2">GSM</p>
+                    <p className="text-muted-foreground">{product?.specs?.gsm}</p>
                   </div>
                   <div>
                     <p className="font-semibold text-foreground mb-2">Fit</p>
-                    <p className="text-muted-foreground">Modern relaxed fit</p>
+                    <p className="text-muted-foreground">{product?.specs?.weatherSuitability}</p>
                   </div>
                   <div>
                     <p className="font-semibold text-foreground mb-2">Available Colors</p>
