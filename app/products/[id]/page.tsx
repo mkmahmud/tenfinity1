@@ -219,6 +219,16 @@ export default function ProductDetailPage() {
                 </p>
               )}
             </div>
+            {/* Out of stock */}
+            <div>
+              {
+                product.inStock ? (
+                  <p className="text-green-500">In Stock</p>
+                ) : (
+                  <p className="text-red-500">Out of Stock</p>
+                )
+              }
+            </div>
 
             {/* Description */}
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{product.description}</p>
@@ -272,6 +282,7 @@ export default function ProductDetailPage() {
             <div className="space-y-3 pt-4">
               <Button
                 onClick={handleAddToCart}
+                disabled={!product.inStock}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-12 text-base md:text-lg font-semibold"
               >
                 {addedToCart ? (

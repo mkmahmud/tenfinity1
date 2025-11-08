@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Package, Truck } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "next/navigation";
 
 export default function OrderSuccessPage() {
@@ -13,20 +13,19 @@ export default function OrderSuccessPage() {
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!orderId) return;
+  if (orderId && loading) {
     const orders = JSON.parse(localStorage.getItem("tenfinity-orders") || "[]");
     const currentOrder = orders.find((o: any) => o.orderId === orderId);
     setOrder(currentOrder);
     setLoading(false);
-
-    if (currentOrder) {
-      console.log("[v0] Order retrieved:", currentOrder);
-    }
-  }, [orderId]);
+  }
 
   if (loading) {
-    return <div className="min-h-screen bg-background flex items-center justify-center">Loading...</div>
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        Loading...
+      </div>
+    );
   }
 
   if (!order) {
@@ -39,7 +38,7 @@ export default function OrderSuccessPage() {
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -58,7 +57,7 @@ export default function OrderSuccessPage() {
 
         {/* Order Details */}
         <div className="bg-white rounded-lg border border-border p-6 md:p-8 mb-8 space-y-8">
-          {/* Order ID and Status */}
+          {/* Order ID and Date */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <p className="text-sm text-muted-foreground mb-1">Order Number</p>
@@ -110,11 +109,11 @@ export default function OrderSuccessPage() {
             <div className="text-sm space-y-1 text-muted-foreground">
               <p className="font-medium text-foreground">{order.customerDetails.name}</p>
               <p>{order.customerDetails.address}</p>
-              <p>
-                {order.customerDetails.city}, {order.customerDetails.state} {order.customerDetails.zipCode}
-              </p>
               <p className="mt-2">{order.customerDetails.phone}</p>
-              <p>{order.customerDetails.email}</p>
+              {order.customerDetails.email && <p>{order.customerDetails.email}</p>}
+              <p>Delivery Area: {order.deliveryArea}</p>
+              <p>Size: {order.size}</p>
+              {order.couponApplied && <p>Coupon Applied: {order.couponApplied}</p>}
             </div>
           </div>
 
@@ -142,7 +141,7 @@ export default function OrderSuccessPage() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Shipping</span>
-                <span>{order.shipping === 0 ? "Free" : `$${order.shipping.toFixed(2)}`}</span>
+                <span>{order.shipping === 0 ? "Free" : `৳${order.shipping.toFixed(2)}`}</span>
               </div>
               <div className="flex justify-between font-bold text-lg pt-2 border-t border-border">
                 <span>Total</span>
@@ -155,7 +154,7 @@ export default function OrderSuccessPage() {
           <div className="pt-6 border-t border-border">
             <p className="text-sm text-muted-foreground mb-2">Payment Method</p>
             <div className="p-4 bg-accent/10 rounded-lg border border-accent/20">
-              <p className="font-semibold">Cash on Delivery</p>
+              <p className="font-semibold">{order.paymentMethod === "cod" ? "Cash on Delivery" : order.paymentMethod}</p>
               <p className="text-sm text-muted-foreground mt-1">
                 Please pay the amount upon delivery:  ৳{order.total.toFixed(2)}
               </p>
@@ -178,11 +177,15 @@ export default function OrderSuccessPage() {
         {/* Note */}
         <div className="mt-8 p-4 md:p-6 bg-muted/30 rounded-lg">
           <p className="text-sm text-muted-foreground">
-            A confirmation email has been sent to <span className="font-semibold">{order.customerDetails.email}</span>.
+            {order.customerDetails.email && (
+              <>
+                A confirmation email has been sent to <span className="font-semibold">{order.customerDetails.email}</span>.{" "}
+              </>
+            )}
             You can track your order using the order number provided above.
           </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
