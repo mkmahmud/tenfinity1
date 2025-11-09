@@ -77,79 +77,103 @@ GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় 
   },
   {
     id: "2",
-    name: "Slim Fit Cotton Pants — Daily Wear",
-    price: 650,
-    originalPrice: 900,
+    name: "প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM Black",
+    price: 700,
+    originalPrice: 1000,
     description:
-      "ফ্যাব্রিক: Cotton blend — আরামদায়ক, স্ট্রেচ এবং টেকসই।",
-    image: "/minimal-cargo-pants-black.jpg",
-    category: "Pants",
-    colors: ["black", "gray", "navy"],
-    rating: 4.7,
+      " ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।",
+
+    image: "/images/2.jpg",
+    allImages: ["/images/2.jpg", "/images/1.png", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
+    category: "Outerwear",
+    colors: ["black", "navy", "sage"],
+    rating: 4.8,
     reviews: 0,
-    inStock: false,
+    inStock: true,
     isNew: true,
     isSale: true,
-    discount: 28,
+    discount: 30,
     specs: {
-      fabric: "Cotton blend",
-      gsm: "220+ GSM",
-      size: ["M (32)", "L (34)", "XL (36)", "2XL (38)"],
-      weatherSuitability: "Daily wear, casual outings",
+      fabric: "One-side brush fleece",
+      gsm: "350+ GSM",
+      size: ["M (40)", "L (42)", "XL (44)", "2XL (46)"],
+      weatherSuitability: "Cold weather, casual outings, everyday use",
     },
-    longDescription: `Slim Fit Cotton Pants — Daily Wear | Limited Stock
+    longDescription: `প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM | Limited Stock
 
-ফ্যাব্রিক: Cotton blend — আরামদায়ক, স্ট্রেচ এবং টেকসই।
+ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।
 
-কালার: কালো | ধূসর | নেভি — Neutral and versatile tones।
+GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় দীর্ঘস্থায়ী ব্যবহার।
 
-সাইজ: M (32) • L (34) • XL (36) • 2XL (38) — Perfect slim fit।
+কালার: কালো | নেভি | মেরুন — সলিড, প্রিমিয়াম টোনে।
 
-ব্যবহারে উপযোগী: দৈনন্দিন ব্যবহার, ক্যাজুয়াল আউটিং বা ভ্রমণ।
+সাইজ: M (40) • L (42) • XL (44) • 2XL (46) — একদম বাস্তব মাপ অনুযায়ী।
+
+ব্যবহারে উপযোগী: ঠান্ডা আবহাওয়া, ক্যাজুয়াল আউটিং, দৈনন্দিন ব্যবহার বা ভ্রমণে।
 
 স্টক: সীমিত — দ্রুত অর্ডার করুন।
 
-✨ আমাদের অঙ্গীকার — Comfort & Style
+✨ আমাদের অঙ্গীকার — কোয়ালিটি ফার্স্ট
 
-প্রতিটি প্যান্ট তৈরি করা হয়েছে উচ্চমানের কাপড় দিয়ে, যাতে আপনি পান আরাম এবং স্টাইল একসাথে।`,
+এক কথায়, আমরা আমাদের পোশাকে মূল ফোকাস দিয়েছি কোয়ালিটিতে।
+আলহামদুলিল্লাহ, আমরা এতটুকু নিশ্চয়তা দিতে পারি — ইনশাল্লাহ, ঠকবেন না। আমরা কথায় না কাজে বিশ্বাসী।
+প্রতিটি হুডি তৈরি করা হয়েছে নিখুঁত কারিগরি ও উচ্চমানের ফ্যাব্রিক দিয়ে, যাতে আপনি পান আরাম, স্টাইল আর আত্মবিশ্বাস—সব একসাথে।
+
+আমরা বুঝি, কোয়ালিটি প্রোডাক্ট না হলে আত্মবিশ্বাসও কমে যায়।
+আর তাই, নিজেকে আরও একধাপ এগিয়ে উপস্থাপন করতে হলে একটা কোয়ালিটি ফুল পোশাকই আপনার সিগনেচার হতে পারে।
+
+স্টক বর্তমানে খুবই সীমিত। ইনশাল্লাহ, রিস্টক হবে, তবে এখনই অর্ডার করলে পাবেন প্রিমিয়াম ব্যাচের পোশাক`
+
   },
   {
     id: "3",
-    name: "Formal Cotton Shirt — Office Ready",
-    price: 780,
-    originalPrice: 1100,
+    name: "প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM Navy",
+    price: 700,
+    originalPrice: 1000,
     description:
-      "ফ্যাব্রিক: Premium cotton — নরম, টেকসই, প্রফেশনাল ফিনিশ।",
-    image: "/silk-blend-shirt-cream.jpg",
-    category: "Shirts",
-    colors: ["white", "light blue", "gray"],
-    rating: 4.9,
+      " ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।",
+
+    image: "/images/3.jpg",
+    allImages: ["/images/3.jpg", "/images/1.png", "/images/2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
+    category: "Outerwear",
+    colors: ["black", "navy", "sage"],
+    rating: 4.8,
     reviews: 0,
-    inStock: false,
+    inStock: true,
     isNew: true,
     isSale: true,
-    discount: 29,
+    discount: 30,
     specs: {
-      fabric: "Premium cotton",
-      gsm: "200+ GSM",
+      fabric: "One-side brush fleece",
+      gsm: "350+ GSM",
       size: ["M (40)", "L (42)", "XL (44)", "2XL (46)"],
-      weatherSuitability: "Office, casual, formal events",
+      weatherSuitability: "Cold weather, casual outings, everyday use",
     },
-    longDescription: `Formal Cotton Shirt — Office Ready | Limited Stock
+    longDescription: `প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM | Limited Stock
 
-ফ্যাব্রিক: Premium cotton — নরম, টেকসই, প্রফেশনাল ফিনিশ।
+ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।
 
-কালার: সাদা | লাইট ব্লু | ধূসর — Professional office tones।
+GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় দীর্ঘস্থায়ী ব্যবহার।
 
-সাইজ: M (40) • L (42) • XL (44) • 2XL (46) — Perfect formal fit।
+কালার: কালো | নেভি | মেরুন — সলিড, প্রিমিয়াম টোনে।
 
-ব্যবহারে উপযোগী: অফিস, ক্যাজুয়াল বা ফর্মাল ইভেন্টস।
+সাইজ: M (40) • L (42) • XL (44) • 2XL (46) — একদম বাস্তব মাপ অনুযায়ী।
+
+ব্যবহারে উপযোগী: ঠান্ডা আবহাওয়া, ক্যাজুয়াল আউটিং, দৈনন্দিন ব্যবহার বা ভ্রমণে।
 
 স্টক: সীমিত — দ্রুত অর্ডার করুন।
 
-✨ আমাদের অঙ্গীকার — Premium Formal Wear
+✨ আমাদের অঙ্গীকার — কোয়ালিটি ফার্স্ট
 
-উচ্চমানের কাপড় এবং Perfect fit, যাতে আপনি অফিস বা ফর্মাল ইভেন্টে আত্মবিশ্বাসী থাকেন।`,
+এক কথায়, আমরা আমাদের পোশাকে মূল ফোকাস দিয়েছি কোয়ালিটিতে।
+আলহামদুলিল্লাহ, আমরা এতটুকু নিশ্চয়তা দিতে পারি — ইনশাল্লাহ, ঠকবেন না। আমরা কথায় না কাজে বিশ্বাসী।
+প্রতিটি হুডি তৈরি করা হয়েছে নিখুঁত কারিগরি ও উচ্চমানের ফ্যাব্রিক দিয়ে, যাতে আপনি পান আরাম, স্টাইল আর আত্মবিশ্বাস—সব একসাথে।
+
+আমরা বুঝি, কোয়ালিটি প্রোডাক্ট না হলে আত্মবিশ্বাসও কমে যায়।
+আর তাই, নিজেকে আরও একধাপ এগিয়ে উপস্থাপন করতে হলে একটা কোয়ালিটি ফুল পোশাকই আপনার সিগনেচার হতে পারে।
+
+স্টক বর্তমানে খুবই সীমিত। ইনশাল্লাহ, রিস্টক হবে, তবে এখনই অর্ডার করলে পাবেন প্রিমিয়াম ব্যাচের পোশাক`
+
   },
   {
     id: "4",
@@ -225,3 +249,6 @@ export const testimonials = [
     rating: 5,
   },
 ]
+
+
+

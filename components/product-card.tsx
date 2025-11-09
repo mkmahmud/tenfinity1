@@ -157,6 +157,8 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
             <span className="text-xs text-muted-foreground">({product.reviews})</span>
           </div>
 
+
+
           {/* Colors */}
           <div className="flex items-center gap-2">
             {product.colors.map((color) => (
@@ -172,6 +174,17 @@ export function ProductCard({ product, showQuickAdd = true }: ProductCardProps) 
                 title={color}
               />
             ))}
+          </div>
+
+          {/* Out of stock */}
+          <div>
+            {
+              product.inStock ? (
+                <p className="text-green-500">In Stock</p>
+              ) : (
+                <p className="text-red-500">Out of Stock</p>
+              )
+            }
           </div>
 
           {/* Price */}
