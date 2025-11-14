@@ -8,6 +8,7 @@ import { AuthProvider } from "@/lib/auth-context"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import "./globals.css"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <AuthProvider>
               <Header />
               {children}
+              <SpeedInsights/>
               <Footer />
             </AuthProvider>
           </WishlistProvider>
