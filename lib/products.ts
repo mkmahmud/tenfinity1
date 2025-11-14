@@ -28,7 +28,7 @@ export const products: Product[] = [
   {
     id: "1",
     name: "প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM ",
-    price: 700,
+    price: 555,
     originalPrice: 1000,
     description:
       " ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।",
@@ -42,7 +42,7 @@ export const products: Product[] = [
     inStock: true,
     isNew: true,
     isSale: true,
-    discount: 30,
+    discount: 44.5,
     specs: {
       fabric: "One-side brush fleece",
       gsm: "350+ GSM",
@@ -78,13 +78,13 @@ GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় 
   {
     id: "2",
     name: "প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM Black",
-    price: 700,
+    price: 555,
     originalPrice: 1000,
     description:
       " ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।",
 
-    image: "/images/2.jpg",
-    allImages: ["/images/2.jpg", "/images/1.png", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
+    image: "/images/black1.jpg",
+    allImages: ["/images/black1.jpg", "/images/2.jpg", "/images/1.png", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
     category: "Outerwear",
     colors: ["black", "navy", "sage"],
     rating: 4.8,
@@ -92,7 +92,7 @@ GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় 
     inStock: true,
     isNew: true,
     isSale: true,
-    discount: 30,
+    discount: 44.5,
     specs: {
       fabric: "One-side brush fleece",
       gsm: "350+ GSM",
@@ -128,13 +128,13 @@ GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় 
   {
     id: "3",
     name: "প্রিমিয়াম One-side Brush Fleece হুডি — 350+ GSM Navy",
-    price: 700,
+    price: 555,
     originalPrice: 1000,
     description:
       " ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।",
 
-    image: "/images/3.jpg",
-    allImages: ["/images/3.jpg", "/images/1.png", "/images/2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
+    image: "/images/navy1.jpg",
+    allImages: ["/images/navy1.jpg", "/images/3.jpg", "/images/1.png", "/images/2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
     category: "Outerwear",
     colors: ["black", "navy", "sage"],
     rating: 4.8,
@@ -142,7 +142,7 @@ GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় 
     inStock: true,
     isNew: true,
     isSale: true,
-    discount: 30,
+    discount: 44.5,
     specs: {
       fabric: "One-side brush fleece",
       gsm: "350+ GSM",
