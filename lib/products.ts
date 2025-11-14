@@ -83,8 +83,8 @@ GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় 
     description:
       " ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।",
 
-    image: "/images/black1.jpg",
-    allImages: ["/images/black1.jpg", "/images/2.jpg", "/images/1.png", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
+    image: "/images/black1.JPG",
+    allImages: ["/images/black1.JPG", "/images/2.jpg", "/images/1.png", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
     category: "Outerwear",
     colors: ["black", "navy", "sage"],
     rating: 4.8,
@@ -133,8 +133,8 @@ GSM: 350+ — ভারি, ঘন ও স্ট্রং—যা দেয় 
     description:
       " ফ্যাব্রিক: One-side brush fleece — নরম, আরামদায়ক স্পর্শ আর টেকসই ফিনিশ।",
 
-    image: "/images/navy1.jpg",
-    allImages: ["/images/navy1.jpg", "/images/3.jpg", "/images/1.png", "/images/2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
+    image: "/images/navy1.JPG",
+    allImages: ["/images/navy1.JPG", "/images/3.jpg", "/images/1.png", "/images/2.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"],
     category: "Outerwear",
     colors: ["black", "navy", "sage"],
     rating: 4.8,
