@@ -18,6 +18,12 @@ export default function CartPage() {
     email: "",
     phone: "",
     address: "",
+    district: "",
+    thana: "",
+    upjila: "",
+    pickupPoint: "",
+    handWrittenColor: "",
+    handWrittenSize: ""
   });
 
   const [deliveryArea, setDeliveryArea] = useState<string>("");
@@ -150,6 +156,104 @@ export default function CartPage() {
           <h1 className="text-3xl md:text-4xl font-bold">Shopping Cart</h1>
         </div>
 
+        {/* coupon COde  */}
+        {(() => {
+          // small inner component so we can use hooks while replacing only this JSX block
+          function CountdownBanner() {
+            const initialSeconds = 10 * 60; // 10 minutes
+            const [secondsLeft, setSecondsLeft] = useState<number>(initialSeconds);
+            const expired = secondsLeft <= 0;
+
+            useEffect(() => {
+              if (expired) {
+                // ensure coupon is invalid when timer ends
+                setIsCouponApplied(false);
+                setCouponError("Coupon expired");
+                return;
+              }
+              const id = setInterval(() => {
+                setSecondsLeft((s) => Math.max(0, s - 1));
+              }, 1000);
+              return () => clearInterval(id);
+            }, [expired]);
+
+            const format = (s: number) => {
+              const m = Math.floor(s / 60)
+                .toString()
+                .padStart(2, "0");
+              const sec = (s % 60).toString().padStart(2, "0");
+              return `${m}:${sec}`;
+            };
+
+            return (
+              <div className="mb-8">
+                {
+                  !expired && <div className="rounded-xl bg-gradient-to-r  bg-[linear-gradient(135deg,oklch(0.5_0.08_150),oklch(0.45_0.12_160),oklch(0.65_0.08_200))] text-white p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                    <div className="flex items-center gap-4">
+                      <div className="flex-none text-3xl">🎁</div>
+                      <div>
+                        <h3 className="font-bold text-lg">Exclusive Delivery Promo</h3>
+                        <p className="text-sm opacity-90">
+                          {expired
+                            ? "The free delivery coupon has expired."
+                            : `Get free delivery if you apply the coupon within ${format(
+                              secondsLeft
+                            )}.`}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <div className="px-3 py-2 bg-white/20 rounded-md text-sm font-mono tracking-wider select-all">
+                        FREESHIP
+                      </div>
+
+                      <Button
+                        onClick={() => {
+                          if (expired) {
+                            setCouponCode("");
+                            setCouponError("Coupon expired");
+                            setIsCouponApplied(false);
+                            return;
+                          }
+                          setCouponCode("FREESHIP");
+                          applyCoupon();
+                        }}
+                        className="bg-white text-indigo-700 hover:bg-white/95 text-sm"
+                        disabled={expired}
+                      >
+                        {expired ? "Expired" : "Apply Coupon"}
+                      </Button>
+
+                      <button
+                        onClick={() => {
+                          try {
+                            navigator.clipboard?.writeText("FREESHIP");
+                          } catch {
+                            /* noop */
+                          }
+                          setCouponCode("FREESHIP");
+                        }}
+                        aria-label="Copy coupon code"
+                        className="px-3 py-2 bg-white/10 hover:bg-white/20 rounded-md text-sm border border-white/20"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                }
+
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Tip: After applying the coupon, shipping will be waived at checkout. If it doesn't apply,
+                  click "Apply Coupon" again.
+                </p>
+              </div>
+            );
+          }
+
+          return <CountdownBanner />;
+        })()}
+        {/* Cart Items */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2">
@@ -355,6 +459,64 @@ export default function CartPage() {
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
                 />
+
+                <h2>অপশনাল তথ্য</h2>
+                {/* Optional Options */}
+                <div>
+                  <div className="flex space-x-2">
+                    <input
+                      type="text"
+                      name="thana"
+                      placeholder="থানাঃ "
+                      value={orderDetails.thana}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                    />
+                    <input
+                      type="text"
+                      name="upjila"
+                      placeholder="উপজেলাঃ "
+                      value={orderDetails.upjila}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    name="district"
+                    placeholder="জেলাঃ "
+                    value={orderDetails.district}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 mt-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                  />
+                  <input
+                    type="text"
+                    name="pickupPoint"
+                    placeholder="পিকআপ পয়েন্টঃ "
+                    value={orderDetails.pickupPoint}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 mt-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                  />
+                  {/* Size color written */}
+                  <div className="flex space-x-2 mt-2">
+                    <input
+                      type="text"
+                      name="handWrittenColor"
+                      placeholder="কালারঃ "
+                      value={orderDetails.handWrittenColor}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                    />
+                    <input
+                      type="text"
+                      name="handWrittenSize"
+                      placeholder="সাইজ ঃ "
+                      value={orderDetails.handWrittenSize}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                    />
+                  </div>
+                </div>
 
                 {/* Payment Methods */}
                 <div className="pt-4 border-t border-border">
